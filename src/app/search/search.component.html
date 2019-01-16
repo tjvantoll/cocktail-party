@@ -1,17 +1,17 @@
 <ActionBar title="Cocktail Party" class="action-bar">
 </ActionBar>
 
-<GridLayout rows="50, *" columns="auto, *" class="m-10">
-  <Label text="Select ingredient: " class="h2"></Label>
-  <DropDown col="1" class="h2" [items]="ingredients$ | async" [(ngModel)]="ingredientIndex" (selectedIndexChanged)="updateCocktailList()"
+<GridLayout rows="50, *" columns="auto, *">
+  <Label text="Ingredient:" class="m-x-15"></Label>
+  <DropDown col="1" [items]="ingredients$ | async" [(ngModel)]="ingredientIndex" (selectedIndexChanged)="updateCocktailList()"
     (closed)="onClose()" hint="select an ingredient">
   </DropDown>
 
   <ListView row="1" colSpan="2" [items]="cocktails$ | async" class="list-group">
     <ng-template let-cocktail="item">
-      <GridLayout rows="auto" columns="auto, *" [nsRouterLink]="['/recipe', cocktail.idDrink]">
-        <Image [src]="cocktail.strDrinkThumb" width="40"></Image>
-        <Label col="1" [text]="cocktail.strDrink" class="list-group-item"></Label>
+      <GridLayout class="list-group-item" rows="auto" columns="auto, *" [nsRouterLink]="['/recipe', cocktail.idDrink]">
+        <Image [src]="cocktail.strDrinkThumb" width="40" class="thumb img-circle"></Image>
+        <Label col="1" [text]="cocktail.strDrink" class="list-group-item-heading"></Label>
       </GridLayout>
     </ng-template>
   </ListView>
