@@ -1,0 +1,20 @@
+<ActionBar [title]="cocktail?.name" icon="" class="action-bar">
+</ActionBar>
+
+<StackLayout *ngIf="cocktail" class="m-5">
+  <Image [src]="cocktail.imageUrl" height="200"></Image>
+
+
+  <Label text="Instructions:" class="label"></Label>
+  <Label [text]="cocktail.instructions" textWrap="true" class="instructions"></Label>
+
+  <Label text="Ingredients:" class="label"></Label>
+  <ListView [items]="cocktail.ingredients" class="list-group" height="100%">
+    <ng-template let-ingredient="item">
+      <GridLayout columns="*, *">
+        <Label [text]="ingredient.ingredient" class="list-group-item"></Label>
+        <Label col="1" [text]="ingredient.measure" class="list-group-item"></Label>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>
